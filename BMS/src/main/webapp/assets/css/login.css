@@ -1,0 +1,13 @@
+.form-wrapper {
+    text-align: center;
+}
+
+.form-wrapper h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-wrapper button {
+    margin-top: 15px;
+}
