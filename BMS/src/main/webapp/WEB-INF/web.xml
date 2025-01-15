@@ -5,47 +5,29 @@
          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
-    <display-name> Bank Management System</display-name>
+    <display-name>Bank Management System</display-name>
     
-    
-     
-    <servlet-mapping>
-        <servlet-name>LoginController</servlet-name>
-        <url-pattern>/LoginController</url-pattern>
-    </servlet-mapping>
-    
-     
-    <servlet>
-    <servlet-name>LogoutController</servlet-name>
-    <servlet-class>com.sit.bankmanagement.client.LogoutController</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>LogoutController</servlet-name>
-    <url-pattern>/LogoutController</url-pattern>
-</servlet-mapping>
-
-<welcome-file-list>
-    <welcome-file>login.jsp</welcome-file>
-</welcome-file-list>
-
-
-   
-    <session-config>
-        <session-timeout>30</session-timeout> 
-    </session-config>
-    
-   
-    
-
-   
+    <!-- Mapping for Login Controller -->
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>com.sit.bankmanagement.client.LoginController</servlet-class>
     </servlet>
-    
-    
-   
-  
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for Logout Controller -->
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>com.sit.bankmanagement.client.LogoutController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
+
+    <!-- Mapping for Register Controller -->
     <servlet>
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>com.sit.bankmanagement.client.RegisterController</servlet-class>
@@ -55,7 +37,7 @@
         <url-pattern>/RegisterController</url-pattern>
     </servlet-mapping>
 
-
+    <!-- Mapping for Dashboard Controller -->
     <servlet>
         <servlet-name>DashboardController</servlet-name>
         <servlet-class>com.sit.bankmanagement.client.DashboardController</servlet-class>
@@ -64,20 +46,20 @@
         <servlet-name>DashboardController</servlet-name>
         <url-pattern>/DashboardController</url-pattern>
     </servlet-mapping>
-<!-- 
-    Error Pages
-    <error-page>
-        <error-code>404</error-code>
-        <location>/WEB-INF/views/error.jsp</location>
-    </error-page>
-
-    <error-page>
-        <error-code>500</error-code>
-        <location>/WEB-INF/views/error.jsp</location>
-    </error-page>
- -->
-  
     
+    
+    <servlet>
+    <servlet-name>AdminRegisterController</servlet-name>
+    <servlet-class>com.sit.bankmanagement.client.AdminRegisterController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>AdminRegisterController</servlet-name>
+    <url-pattern>/AdminRegisterController</url-pattern>
+</servlet-mapping>
+    
+
+    <!-- Security for User Login -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Login</web-resource-name>
@@ -88,8 +70,15 @@
         </auth-constraint>
     </security-constraint>
 
+    <!-- Login Configuration -->
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>BankManagement</realm-name>
     </login-config>
+
+    <!-- Mapping for Main Panel -->
+    <welcome-file-list>
+        <welcome-file>main.jsp</welcome-file>
+    </welcome-file-list>
+
 </web-app>
