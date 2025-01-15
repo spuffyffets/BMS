@@ -1,34 +1,95 @@
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
-         version="5.0">
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
-    <!-- Welcome File Configuration -->
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-
-    <!-- Application Display Name -->
-    <display-name>Bank Management System</display-name>
-
-    <!-- Login Servlet Configuration -->
+    <display-name> Bank Management System</display-name>
+    
+    
+     
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+    
+     
     <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.sit.bankmanagement.client.LoginServlet</servlet-class>
+    <servlet-name>LogoutController</servlet-name>
+    <servlet-class>com.sit.bankmanagement.client.LogoutController</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>LogoutController</servlet-name>
+    <url-pattern>/LogoutController</url-pattern>
+</servlet-mapping>
+
+<welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+</welcome-file-list>
+
+
+   
+    <session-config>
+        <session-timeout>30</session-timeout> 
+    </session-config>
+    
+   
+    
+
+   
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>com.sit.bankmanagement.client.LoginController</servlet-class>
+    </servlet>
+    
+    
+   
+  
+    <servlet>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>com.sit.bankmanagement.client.RegisterController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/RegisterController</url-pattern>
     </servlet-mapping>
 
-    <!-- Register Servlet Configuration -->
+
     <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.sit.bankmanagement.client.RegisterServlet</servlet-class>
+        <servlet-name>DashboardController</servlet-name>
+        <servlet-class>com.sit.bankmanagement.client.DashboardController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
+        <servlet-name>DashboardController</servlet-name>
+        <url-pattern>/DashboardController</url-pattern>
     </servlet-mapping>
+<!-- 
+    Error Pages
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/error.jsp</location>
+    </error-page>
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/error.jsp</location>
+    </error-page>
+ -->
+  
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Login</web-resource-name>
+            <url-pattern>/LoginController</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>BankManagement</realm-name>
+    </login-config>
 </web-app>

@@ -1,32 +1,10 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/login.css">
-</head>
-<body>
-    <div class="login-form">
-        <h2>Login</h2>
-        <form action="DashboardController" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-</body>
-</html>
- -->
- 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login </title>
   <style>
-    /* CSS Variables for Dynamic Colors */
     :root {
       --primary-color: #0074d9;
       --primary-dark: #005bb5;
@@ -41,7 +19,6 @@
       --link-hover-color: var(--primary-dark);
     }
 
-    /* General Styles */
     body {
       font-family: 'Arial', sans-serif;
       background-color: var(--background-color);
@@ -115,7 +92,6 @@
       text-decoration: underline;
     }
 
-    /* Theme Toggle Button */
     .theme-toggle {
       position: absolute;
       top: 1rem;
@@ -150,7 +126,6 @@
   </div>
 
   <script>
-    // Theme Toggle Functionality
     const themeToggleBtn = document.getElementById('themeToggle');
     let darkMode = false;
 
@@ -187,4 +162,3 @@
   <script src="script.js"></script>
 </body>
 </html>
- 

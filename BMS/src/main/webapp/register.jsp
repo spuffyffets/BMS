@@ -1,30 +1,9 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/login.css">
-</head>
-<body>
-    <div class="login-form">
-        <h2>Login</h2>
-        <form action="DashboardController" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-</body>
-</html>
- -->
- 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login </title>
+  <title>Register</title>
   <style>
     /* CSS Variables for Dynamic Colors */
     :root {
@@ -136,16 +115,25 @@
 <body>
   <!-- <button class="theme-toggle" id="themeToggle">Toggle Theme</button> -->
   <div class="form-container">
-    <h2>Login</h2>
-    <form id="loginForm">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
       <label for="username">Username</label>
-      <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      <input type="text" id="username" name="username" placeholder="Choose a username" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <input type="password" id="password" name="password" placeholder="Create a password" required>
 
-      <button type="submit">Login</button>
-      <p>Don't have an account? <a href="register.html">Register here</a></p>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+
+      <button type="submit">Register</button>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
     </form>
   </div>
 
@@ -182,9 +170,39 @@
         document.documentElement.style.setProperty('--link-hover-color', '#005bb5');
       }
     });
+
+    // Handle Registration Form Submission
+    document.getElementById('registerForm')?.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
+
+      const response = await fetch('http://localhost:8080/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, username, email, password }),
+      });
+
+      if (response.ok) {
+        alert('Registration successful! Redirecting to login page...');
+        window.location.href = 'WEB-INF/login.jsp';
+      } else {
+        alert('Registration failed. Please try again.');
+      }
+    });
   </script>
 
   <script src="script.js"></script>
 </body>
 </html>
- 

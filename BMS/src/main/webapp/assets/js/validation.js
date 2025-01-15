@@ -1,11 +1,9 @@
 function validateForm() {
+    const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-
-    if (password !== confirmPassword) {
-        alert("Passwords do not match!");
+    if (username === "" || password === "") {
+        alert("All fields are required!");
         return false;
     }
-
     return true;
 }
