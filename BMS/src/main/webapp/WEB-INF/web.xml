@@ -1,84 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         version="3.0">
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
 
-    <display-name>Bank Management System</display-name>
-    
-    <!-- Mapping for Login Controller -->
+    <!-- Welcome page -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Listener to initialize the database -->
+    <listener>
+        <listener-class>com.bankmanagement.util.DatabaseInitializer</listener-class>
+    </listener>
+
+    <!-- Session Configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Servlet Configurations -->
+    <!-- Admin Registration -->
     <servlet>
-        <servlet-name>LoginController</servlet-name>
-        <servlet-class>com.sit.bankmanagement.client.LoginController</servlet-class>
+        <servlet-name>AdminRegisterServlet</servlet-name>
+        <servlet-class>com.bankmanagement.servlets.AdminRegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoginController</servlet-name>
-        <url-pattern>/LoginController</url-pattern>
+        <servlet-name>AdminRegisterServlet</servlet-name>
+        <url-pattern>/admin/register</url-pattern>
     </servlet-mapping>
 
-    <!-- Mapping for Logout Controller -->
+    <!-- Admin Login -->
     <servlet>
-        <servlet-name>LogoutController</servlet-name>
-        <servlet-class>com.sit.bankmanagement.client.LogoutController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LogoutController</servlet-name>
-        <url-pattern>/LogoutController</url-pattern>
-    </servlet-mapping>
-
-    <!-- Mapping for Register Controller -->
-    <servlet>
-        <servlet-name>RegisterController</servlet-name>
-        <servlet-class>com.sit.bankmanagement.client.RegisterController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegisterController</servlet-name>
-        <url-pattern>/RegisterController</url-pattern>
-    </servlet-mapping>
-
-    <!-- Mapping for Dashboard Controller -->
-    <servlet>
-        <servlet-name>DashboardController</servlet-name>
-        <servlet-class>com.sit.bankmanagement.client.DashboardController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DashboardController</servlet-name>
-        <url-pattern>/DashboardController</url-pattern>
-    </servlet-mapping>
-    
-    
-    <servlet>
-    <servlet-name>AdminRegisterController</servlet-name>
-    <servlet-class>com.sit.bankmanagement.client.AdminRegisterController</servlet-class>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <servlet-class>com.bankmanagement.servlets.AdminLoginServlet</servlet-class>
 </servlet>
-
 <servlet-mapping>
-    <servlet-name>AdminRegisterController</servlet-name>
-    <url-pattern>/AdminRegisterController</url-pattern>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <url-pattern>/admin/login</url-pattern>
 </servlet-mapping>
-    
 
-    <!-- Security for User Login -->
+    <!-- Admin Dashboard -->
+    <servlet>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <servlet-class>com.bankmanagement.servlets.AdminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <!-- User Login -->
+    <servlet>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <servlet-class>com.bankmanagement.servlets.UserLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <url-pattern>/user/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- User Dashboard -->
+    <servlet>
+        <servlet-name>UserDashboardServlet</servlet-name>
+        <servlet-class>com.bankmanagement.servlets.UserDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserDashboardServlet</servlet-name>
+        <url-pattern>/user/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <!-- Account Creation -->
+    <servlet>
+        <servlet-name>CreateUserServlet</servlet-name>
+        <servlet-class>com.bankmanagement.servlets.CreateUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateUserServlet</servlet-name>
+        <url-pattern>/user/create</url-pattern>
+    </servlet-mapping>
+
+    <!-- Transactions -->
+    <servlet>
+        <servlet-name>TransactionServlet</servlet-name>
+        <servlet-class>com.bankmanagement.servlets.TransactionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TransactionServlet</servlet-name>
+        <url-pattern>/transactions</url-pattern>
+    </servlet-mapping>
+
+    <!-- Error Pages -->
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500.jsp</location>
+    </error-page>
+
+    <!-- Security Constraints -->
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Login</web-resource-name>
-            <url-pattern>/LoginController</url-pattern>
+            <web-resource-name>AdminArea</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>UserArea</web-resource-name>
+            <url-pattern>/user/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>
         </auth-constraint>
     </security-constraint>
-
-    <!-- Login Configuration -->
-    <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>BankManagement</realm-name>
-    </login-config>
-
-    <!-- Mapping for Main Panel -->
-    <welcome-file-list>
-        <welcome-file>main.jsp</welcome-file>
-    </welcome-file-list>
 
 </web-app>

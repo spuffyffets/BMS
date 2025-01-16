@@ -127,7 +127,7 @@
       <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
 
       <button type="submit">Register</button>
-      <p>Already have an account? <a href="login.jsp">Login here</a></p>
+      <p>Already have an account? <a href="adminLogin.jsp">Login here</a></p>
     </form>
   </div>
 

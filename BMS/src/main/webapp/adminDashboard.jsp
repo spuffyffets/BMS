@@ -180,18 +180,16 @@
   </main>
 
   <script>
-    // JavaScript functions for handling actions
     function viewAllAccounts() {
-      window.location.href = 'adminAccounts.jsp';  // Navigate to Accounts page
+      window.location.href = 'adminAccounts.jsp';  
     }
 
     function viewAllTransactions() {
-      window.location.href = 'adminTransactions.jsp';  // Navigate to Transactions page
+      window.location.href = 'adminTransactions.jsp';  
     }
 
     function searchAccount() {
-      // Trigger search functionality (open modal or navigate)
-      window.location.href = 'searchAccount.jsp';  // Navigate to search page
+      window.location.href = 'searchAccount.jsp';  
     }
   </script>
 </body>
