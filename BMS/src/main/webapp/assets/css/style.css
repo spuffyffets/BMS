@@ -1,1 +1,173 @@
-@charset "UTF-8";
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #e3f2fd, #90caf9);
+  color: #333;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0.5em 0;
+  text-align: center;
+}
+
+/* Header Styles */
+.header {
+  background: #1e88e5;
+  color: white;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+  font-size: 1.8rem;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5em;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #ffc107;
+}
+
+/* Main Content Styles */
+.main-content {
+  padding: 2em;
+}
+
+.section {
+  margin: 2em auto;
+  padding: 2em;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cards-container {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  width: 300px;
+  padding: 1.5em;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5em;
+}
+
+.card p {
+  color: #757575;
+  margin-bottom: 1em;
+}
+
+.card button {
+  padding: 0.5em 1.5em;
+  background: #42a5f5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card button:hover {
+  background: #1e88e5;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Login & Register Styles */
+.form-container {
+  margin: 2em auto;
+  padding: 2em;
+  background: white;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  margin-bottom: 1em;
+  text-align: center;
+  color: #1e88e5;
+}
+
+.form-container label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.5em;
+  color: #555;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 0.7em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-container input:focus {
+  border-color: #42a5f5;
+  outline: none;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 0.7em;
+  background: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-container button:hover {
+  background: #0d47a1;
+}
+
+/* Footer Styles */
+.footer {
+  background: #1e88e5;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+

@@ -115,7 +115,7 @@
   <!-- <button class="theme-toggle" id="themeToggle">Toggle Theme</button> -->
   <div class="form-container">
     <h2>Admin Login</h2>
-    <form id="loginForm" action="LoginController" method="post">
+    <form id="loginForm" action="AdminLoginController" method="post">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" placeholder="Enter your username" required>
 

@@ -120,7 +120,7 @@ body {
 			</div>
 			<div class="signup">
 				<p>
-					Don't have an account? <a href="#">Sign up</a>
+					Don't have an account? <a href="adminRegister.jsp">Sign up</a>
 				</p>
 			</div>
 		</div>

@@ -1,26 +1,35 @@
 package com.bankmanagement.servlets;
 
 import java.io.IOException;
-import com.bankmanagement.models.User;
+
 import com.bankmanagement.services.UserService;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet("/UserLoginController")
 public class UserLoginServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("username");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         UserService userService = new UserService();
-        User user = userService.getUserDetails(email, password);
 
-        if (user != null) {
-            request.getSession().setAttribute("user", user);
-            response.sendRedirect("userDashboard.jsp");
-        } else {
-            response.sendRedirect("error.jsp");
+        try {
+            boolean userValid = userService.getUserDetails(username, password);
+            if (userValid) {
+                response.sendRedirect("userDashboard.jsp");  
+            } else {
+                request.setAttribute("errorMessage", "Invalid credentials");
+                request.getRequestDispatcher("userLogin.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage", "An error occurred during login");
+            request.getRequestDispatcher("userLogin.jsp").forward(request, response);
         }
     }
 }
